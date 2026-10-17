@@ -1,0 +1,62 @@
+The Game PK: an unofficial PC-88VA / PC-88VA2 port of an arcade game
+(MS-DOS 4.0 disk)
+
+This is an independent, unofficial program. It is not made, endorsed or
+supported by the owners of the original game or by NEC.
+
+This disk holds MS-DOS 4.0 for the PC-88VA (FreeDOS-88VA project, MIT
+licence, see LICENSE.TXT and README.TXT) and PK.COM (two-clause BSD
+licence, see PKLICENS.TXT). It contains no data from the arcade game: you
+need your own copies of its ROM files.
+
+ROM files
+---------
+PK needs eight files, recognised by size and CRC-32 (any names): the four
+program ROMs of either version A or version B, and four shared ROMs.
+
+    size   CRC-32 (A)  CRC-32 (B)
+    4096   FEE263B3    C1E6AB10     program 1
+    4096   39D1FC83    1A6FB2D4     program 2
+    4096   02083B03    BCDD1BEB     program 3
+    4096   7A36FE55    817D94E3     program 4
+
+    size   CRC-32
+    4096   0C944964     tiles
+    4096   958FEDF9     sprites
+      32   2FC650BD     colours
+     256   3EB3A8E4     colour lookup
+
+Copy them to the root of this disk under MS-DOS, or on a PC run
+
+    python3 install_roms.py pk-msdos4.d88 ROMS.zip
+
+(the zip, or a directory, holding the files) which writes
+pk-msdos4-roms.d88; install_roms.py needs pcengine_disk.py beside it.
+Version B is what game-extraction-toolbox
+(https://github.com/shawngmc/game-extraction-toolbox) extracts from the
+game's Steam re-release; its zip can be given to install_roms.py as it is.
+PK names the first file it does not find. PK DIRECTORY looks for them in
+another directory.
+
+Running
+-------
+The disk starts PK from AUTOEXEC.BAT. The game needs a monitor that
+accepts 15 kHz (320x224 at 15.98 kHz, 59.9 Hz), and the machine must be
+started in 15 kHz mode (CRT mode: DIP switch SW1 off); started at 24 kHz,
+PK stops with a message. It also needs memory up to segment 6080h (about
+390 KB). Picture the game with the monitor turned clockwise: the top of the
+game is on the left of the screen. Sound uses the YM2203's SSG channels.
+
+First an alignment screen is shown for about 5 seconds: let the monitor
+adjust itself, move the picture with keypad 8 2 4 6 (or the cursor keys),
+start at once with RETURN or SPACE.
+
+Keys (in the game's orientation):
+
+    keypad 8 2 4 6, cursor keys   move
+    5                             coin
+    1, 2                          1 player, 2 player start
+    F10                           DIP switches, sound test
+    ESC                           restart the machine
+
+DIP switch changes restart the game; they are not saved.
