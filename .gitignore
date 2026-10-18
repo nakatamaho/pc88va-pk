@@ -1,0 +1,18 @@
+# Arcade ROM images and anything derived from them are never committed.
+# The build reads them from $PK_ROMS (tools/roms.py).
+*.zip
+*.6e
+*.6f
+*.6h
+*.6j
+*.5e
+*.5f
+*.7f
+*.1m
+*.3m
+*.4a
+*.rom
+*.bin
+*.d88
+build/
+__pycache__/
